@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DATAVERSES</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/res/img/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/res/img/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/res/img/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/res/manifest.json">
+	<link rel="mask-icon" href="/res/img/icons/safari-pinned-tab.svg" color="#000000">
+	<link rel="shortcut icon" href="/res/img/icons/favicon.ico">
+	<meta name="msapplication-config" content="/res/browserconfig.xml">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/res/css/reset.css"><link rel="stylesheet" href="/res/css/common.css"><link rel="stylesheet" href="/res/css/scanlines.css"><link rel="stylesheet" href="/res/css/synapsian.css"><link rel="stylesheet" href="/res/css/compendium.css"><script src="/res/js/jquery.js"></script><script src="/res/js/howler.js"></script><script src="/res/js/synapsian.js"></script></head>
+<body>
+	<div id="contentloader">
+	<img id="loadtsuki" src="/res/img/loader/loadtsuki.png"/>
+	<img id="loadspin" src="/res/img/loader/loadspin.png"/>
+</div>
+<style>
+	#contentloader {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		z-index: 10000;
+		transition: 0.2s;
+	}
+
+	#loadtsuki {
+		position: absolute;
+		left: calc(50% - 48px);
+		top: calc(50% - 48px);
+	}
+
+	#loadspin {
+		position: absolute;
+		left: calc(50% - 46px);
+		top: calc(50% - 47px);
+		animation: LoaderSpin 2s infinite linear;
+	}
+
+	@keyframes LoaderSpin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.destroyedloader {
+		opacity: 0;
+		pointer-events: none;
+		transition: 0.5s !important;	
+	}
+
+	.destroyedloader #loadtsuki {
+		top: calc(50% - 100px);
+		transition: 0.5s ease-in !important;
+	}
+
+	.destroyedloader #loadspin {
+		top: calc(50% - 100px);
+		transition: 0.5s ease-in !important;
+	}
+</style>
+<script>
+	window.addEventListener("load", function(event) {
+		document.getElementById("contentloader").className = "destroyedloader";
+		document.getElementById("loadspin").src = "/res/img/loader/loadfinish.png";
+	});
+	
+	window.onbeforeunload = function() {
+		document.getElementById("contentloader").classList.remove("destroyedloader");
+		document.getElementById("loadspin").src = "/res/img/loader/loadspin.png";
+	}
+</script>
+<div id="header">
+	<div id="headerbar">
+		<a href="/status.php"><img id="headerstatus" src="/res/img/headerbar/status-ok.png"></a>		<img id="headerfade_left" src="/res/img/headerbar/fade-left.png">
+		<marquee truespeed scrolldelay="30" scrollamount="3" id="headernews">
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+			<p>Welcome to the TSUKI project's homepage</p>
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+			<p style="color: lime">Registrations open</p>
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+			<p style="color: lime">Gates open</p>
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+			<p>4969 users registered</p>
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+			<p>Latest news: &quot;Object assignment&quot;</p>
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+			<p>Life is linked.</p>
+			<img class="newssep" src="/res/img/headerbar/sep.png">
+		</marquee>
+	</div>
+	<a href="/"><img id="knob" src="/res/img/headerbar/knobs/tsuki_knob.png"/></a>
+	<a href="https://systemspace.link/"><img id="knob4" src="/res/img/headerbar/knobs/officialknob.png"/></a>
+	<a href="/login.php"><img id="knob5" src="/res/img/headerbar/knobs/loginknob.png"/></a>
+	<a href="/preferences.php"><img id="knob2" src="/res/img/headerbar/knobs/prefsknob.png"/></a>
+</div>
+<style>
+	#header {
+		position: relative;
+		z-index: 1;
+	}
+
+	#headerbar {
+		position: fixed;
+		width: 100%;
+		left: 0;
+		top: 0;
+		height: 20px;
+		background-color: #000;
+		box-shadow: 0px 1px #FFF, 0px 2px #000;
+	}
+
+	#headerstatus {
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 1;
+	}
+
+	#headerfade_left {
+		position: fixed;
+		left: 150px;
+		top: 0px;
+		z-index: 1;
+	}
+
+	#headernews {
+		width: 100%;
+		font-family: Heading;
+		font-size: 16px;
+		letter-spacing: -4px;
+	}
+
+	#headernews p {
+		display: inline;
+		position: relative;
+		top: -2px;
+	}
+
+	#knob {
+		position: fixed;
+		left: 0;
+		top: 20px;
+	}
+
+	#knob2 {
+		position: fixed;
+		right: 0;
+		top: 20px;
+	}
+
+	#knob3 {
+		position: fixed;
+		right: 100px;
+		top: 20px;
+	}
+
+	#knob4 {
+		position: fixed;
+		left: 200px;
+		top: 20px;
+	}
+
+	#knob5 {
+		position: fixed;
+		left: 350px;
+		top: 20px;
+	}
+
+	#knob6 {
+		position: fixed;
+		left: 460px;
+		top: 20px;
+	}
+
+	#knob7 {
+		position: fixed;
+		left: 492px;
+		top: 20px;
+	}
+</style>
+<div id="index" class="dataverses">
+		<div class="overload">
+			<center>
+				<span>
+					<div>
+						<br>
+						<a href="/dataverses"><h1>DATAVERSES</h1></a>
+						<a href="/"><h6>back to TSUKI</h6></a>
+					</div>
+				</span>
+			</center>
+			<hr>
+			<center>
+				<a href="../">One up</a>
+				<br><br>
+			</center>
+		</div>
+	</div>
+
+		<script>
+	        document.addEventListener("DOMContentLoaded", function(event) { 
+	            var music = new Howl({
+	                src: ["/res/audio/bgm/compendium.ogg"],
+	                loop: true,
+	                volume: 0.5
+	            });
+
+	            window.addEventListener("load", function(event) {
+	                music.play();
+	            });
+
+	            synapsify();
+	        });
+	    </script>
+	<div class="seperator"></div><div id="warning">
+			<img src="/res/img/ui/warning.png">
+			<div id="warningcontent">
+				<h1>Third-party content</h1>
+				<p>The Compendium is content made by migrants. Although the Archivists work very hard to give you the most correct info available, there might be errors.</p>
+			</div>
+		</div><div class="compendium">
+			<br><br>
+	<center>
+		<h1>Welcome to the Compendium!</h1>
+		<p>Click a link below to visit the page.</p>
+		<br>
+		<br>
+		<a href="compendium.php"><h3 class="option">Systemspace Compendium<br><span class="synapsian" data-content="G,TGNN,TFNN;G,T=BN,TZNN;G,TaAN,SANN,SFNN"></span></h3></a>
+		<br><br>
+		<a href="voidfile.php"><h3 class="option">Void File Reports<br><span class="synapsian" data-content="N,TKAN,SVNN,SWAN;N,TLNN,SuNN,SbNN"></span></h3></a>
+		<br><br>
+		<a href="lfenews.php"><h3 class="option">LFE News<br>LFE<span class="synapsian" data-content="N,WpNN,WUNN"></span></h3></a>
+		<br><br>
+		<a href="community-dataverses.php"><h3 class="option">Community Dataverses<br><span class="synapsian" data-content="G,TGNN,TGNN;N,FvNN;N,WVNN,WoND"></span></h3></a>
+		<br><br>
+		<p>Many thanks to migrants 1336 and 655 for their effort!</p>
+	</center>
+</div></body>
+</html>
